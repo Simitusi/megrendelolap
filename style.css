@@ -1,0 +1,314 @@
+:root{
+  --sheet-bg: #d8d0c9;
+  --band-bg:  #bfb6b0;
+  --ink:      #1a1a1a;
+
+  --box-bg:   #ffffff;
+  --box-br:   #3f3f3f;
+
+  --pad-x: 12px;
+  --gap-y: 8px;
+  --gap-x: 16px;
+
+  --font: Arial, Helvetica, sans-serif;
+  --fs: 13px;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  background: #111;
+  font-family: var(--font);
+  color: var(--ink);
+}
+
+.sheet{
+  width: 210mm;
+  height: 297mm;
+  margin: 14px auto;
+  background: var(--sheet-bg);
+  border: 1px solid #2f2f2f;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar{
+  background: var(--band-bg);
+  padding: 10px var(--pad-x);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topbar__center{
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+}
+
+.topbar__title{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  position: relative;
+  top: 3px;
+}
+
+.topbar__logo{
+  height: 60px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.form-grid{
+  flex: 1;
+  padding: 10px var(--pad-x);
+  width: 100%;
+  max-width: 190mm;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-y);
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-x);
+  align-items: start;
+}
+
+/* Színek rows: denser spacing */
+.row.color-row{
+  gap: 8px;
+  margin-top: 2px;
+}
+.row.color-row .field{ gap: 2px; }
+.row.color-row .ctrl{ height: 24px; }
+
+.field{
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.lbl{
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ctrl{
+  width: 100%;
+  height: 26px;
+  font-size: var(--fs);
+  padding: 3px 8px;
+  border: 2px solid var(--box-br);
+  background: var(--box-bg);
+  border-radius: 2px;
+  outline: none;
+}
+
+.ctrl::placeholder{
+  color: #1f1f1f;
+  opacity: 1;
+}
+
+select.ctrl{ appearance: auto; }
+
+.ctrl-readonly{ background: #f3f0ee; }
+
+.hint{
+  min-height: 12px;
+  font-size: 11px;
+  color: rgba(0,0,0,0.65);
+  line-height: 1.1;
+}
+
+.ta{
+  min-height: 52px;
+  height: 52px;
+  resize: none;
+  padding-top: 6px;
+  line-height: 1.2;
+}
+
+.stack{
+  display: grid;
+  gap: 6px;
+}
+
+.field.empty{
+  visibility: hidden;
+}
+.ctrl.fake{
+  height: 26px;
+}
+
+.error{
+  min-height: 12px;
+  font-size: 11px;
+  color: #b00020;
+  line-height: 1.1;
+}
+
+.footer{
+  background: var(--band-bg);
+  padding: 8px var(--pad-x);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__center{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-weight: 700;
+}
+
+.footer__center .sep{
+  width: 2px;
+  height: 14px;
+  background: rgba(0,0,0,0.35);
+}
+
+@media (max-width: 760px){
+  .sheet{
+    width: calc(100vw - 20px);
+    height: auto;
+    overflow: visible;
+    margin: 10px auto;
+  }
+  .row{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media print{
+  body{ background: #fff; }
+  .sheet{
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+  }
+  .form-grid{
+    max-width: 190mm;
+    padding: 8mm 10mm;
+  }
+}
+
+.print-btn{
+  position: absolute;
+  right: 12px;
+  top: 10px;
+
+  height: 30px;
+  padding: 0 12px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  border: 2px solid var(--box-br);
+  background: #f3f0ee;
+  color: var(--ink);
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+.print-btn:hover{
+  background: #ffffff;
+}
+
+.print-btn:active{
+  transform: translateY(1px);
+}
+
+
+[hidden]{ display:none !important; }
+
+
+/* =========================
+   PRINT: FORCE 1x A4 PAGE
+   ========================= */
+
+@media screen and (max-width: 760px){
+  .sheet{
+    width: calc(100vw - 20px);
+    height: auto;
+    overflow: visible;
+    margin: 10px auto;
+  }
+  .row{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
+
+@page{
+  size: A4;
+  margin: 0;
+}
+
+@media print{
+  html, body{
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  *{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* FORCE the page structure */
+  .sheet{
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+
+    display: flex !important;          /* THIS must win */
+    flex-direction: column !important;
+  }
+
+  .topbar{
+    flex: 0 0 auto !important;
+  }
+
+  .footer{
+    flex: 0 0 auto !important;
+    margin-top: auto !important;       /* pins footer to bottom */
+  }
+
+  .form-grid{
+    flex: 1 1 auto !important;         /* takes remaining space */
+    min-height: 0 !important;          /* prevents weird overflow behavior */
+  }
+
+  /* Keep 2 columns in print no matter what */
+  .row{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* No button in PDF */
+  .print-btn{ display: none !important; }
+}

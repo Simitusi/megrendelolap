@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Megrendelőlap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="sheet" aria-label="Megrendelőlap A4">
+
+    <!-- HEADER BAND -->
+    <header class="topbar">
+
+      <div class="topbar__center">
+        <h1 class="topbar__title">Megrendelőlap</h1>
+        <img class="topbar__logo" src="logo.svg" alt="coolgray logo" />
+      </div>
+      <button type="button" class="print-btn" id="printBtn">
+        PDF / Nyomtatás
+      </button>
+    </header>
+
+    <!-- FORM -->
+    <form class="form-grid" id="orderForm" novalidate>
+
+      <!-- Row 1 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="orderSubject">Megrendelés tárgya:</label>
+          <select class="ctrl" id="orderSubject" required>
+            <option value="" selected disabled>Válassz</option>
+            <option value="klise">Klisé</option>
+            <option value="proof">Proof</option>
+          </select>
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="date">Dátum:</label>
+          <input class="ctrl" id="date" type="text" placeholder="éééé.hó.nap" required />
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="garnitura">Garnitúra (darab) száma:</label>
+          <input class="ctrl" id="garnitura" type="number" inputmode="numeric" min="1" step="1" placeholder="kitöltendő" required />
+          <div class="error"></div>
+        </div>
+
+        <div class="field empty" aria-hidden="true">
+          <label class="lbl">&nbsp;</label>
+          <div class="ctrl fake"></div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="koltsegviselo">Költségviselő:</label>
+
+          <div class="stack">
+            <select class="ctrl" id="koltsegviselo" required>
+              <option value="" selected disabled>Válassz</option>
+              <option value="policell">PoliCell</option>
+              <option value="poliferr">PoliFerr 2000</option>
+              <option value="other">Egyéb</option>
+            </select>
+
+            <input class="ctrl" id="koltsegviseloOther" type="text" placeholder="Egyéb költségviselő" />
+          </div>
+
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="koltsegviseloAdatai">Költségviselő adatai:</label>
+          <input class="ctrl" id="koltsegviseloAdatai" type="text" placeholder="kitöltendő" required />
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="cim1">Szállítási cím 1:</label>
+          <textarea class="ctrl ta" id="cim1" placeholder="kitöltendő" required></textarea>
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="cim2">Szállítási cím 2:</label>
+          <textarea class="ctrl ta" id="cim2" placeholder="kitöltendő"></textarea>
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="munkaNev">Munka megnevezése:</label>
+          <input class="ctrl" id="munkaNev" type="text" placeholder="kitöltendő" required />
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="munkaSzam">Munka száma:</label>
+          <input class="ctrl" id="munkaSzam" type="text" placeholder="kitöltendő" required />
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 6: Tech + Torzítás (right side was empty) -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="tech">Nyomtatási technológia:</label>
+          <select class="ctrl" id="tech" required>
+            <option value="" selected disabled>Válassz</option>
+            <option value="flexo">Flexo</option>
+            <option value="ofszet">Ofszet</option>
+            <option value="digitalis">Digitális</option>
+          </select>
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="torzitas">Torzítás (%):</label>
+          <input class="ctrl ctrl-readonly" id="torzitas" type="text" readonly placeholder="—" />
+          <div class="hint" id="torzitasHint"></div>
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 7 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="kliseV">Klisé vastagság:</label>
+          <select class="ctrl" id="kliseV" required>
+            <option value="" selected disabled>Válassz</option>
+            <option value="1,14">1,14</option>
+            <option value="2,54">2,54</option>
+            <option value="2,84">2,84</option>
+          </select>
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="henger">Henger kerület:</label>
+          <input class="ctrl" id="henger" type="number" inputmode="decimal" min="0" step="0.01" placeholder="kitöltendő" required />
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 8 -->
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="nyomtatas">Nyomtatás:</label>
+          <select class="ctrl" id="nyomtatas" required>
+            <option value="" selected disabled>Válassz</option>
+            <option value="direkt">Direktnyomtatás</option>
+            <option value="tukor">Tükörnyomtatás</option>
+          </select>
+          <div class="error"></div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="racs">Rácssűrűség (#):</label>
+          <select class="ctrl" id="racs" required>
+            <option value="" selected disabled>Válassz</option>
+            <option>#34</option><option>#36</option><option>#38</option>
+            <option>#40</option><option>#42</option><option>#44</option>
+            <option>#46</option><option>#48</option><option>#50</option>
+            <option>#52</option><option>#54</option><option>#60</option>
+          </select>
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <!-- Row 9: Színek + Szögállás (first row, always visible) -->
+      <div class="row color-row" id="colorsRow1">
+        <div class="field">
+          <label class="lbl" for="color1">Színek:</label>
+          <input class="ctrl" id="color1" type="text" placeholder="kitöltendő" />
+          <div class="error"></div>
+        </div>
+
+        <div class="field angle-field">
+          <label class="lbl" for="angle1">Szögállás:</label>
+          <select class="ctrl" id="angle1">
+            <option value="" selected disabled>Válassz</option>
+          </select>
+          <div class="error"></div>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- FOOTER BAND -->
+    <footer class="footer">
+      <div class="footer__center">
+        <span>info@coolgray.hu</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>+36 70 352 1228</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
