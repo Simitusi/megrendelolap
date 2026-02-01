@@ -30,7 +30,7 @@
         <div class="field">
           <label class="lbl" for="orderSubject">Megrendelés tárgya:</label>
           <select class="ctrl" id="orderSubject" required>
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
             <option value="klise">Klisé</option>
             <option value="proof">Proof</option>
           </select>
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="field">
           <label class="lbl" for="garnitura">Garnitúra (darab) száma:</label>
-          <input class="ctrl" id="garnitura" type="number" inputmode="numeric" min="1" step="1" placeholder="kitöltendő" required />
+          <input class="ctrl" id="garnitura" type="number" inputmode="numeric" min="1" step="1" required />
           <div class="error"></div>
         </div>
 
@@ -65,7 +65,7 @@
 
           <div class="stack">
             <select class="ctrl" id="koltsegviselo" required>
-              <option value="" selected disabled>Válassz</option>
+              <option value="" selected disabled></option>
               <option value="policell">PoliCell</option>
               <option value="poliferr">PoliFerr 2000</option>
               <option value="other">Egyéb</option>
@@ -79,7 +79,7 @@
 
         <div class="field">
           <label class="lbl" for="koltsegviseloAdatai">Költségviselő adatai:</label>
-          <input class="ctrl" id="koltsegviseloAdatai" type="text" placeholder="kitöltendő" required />
+          <input class="ctrl" id="koltsegviseloAdatai" type="text" required />
           <div class="error"></div>
         </div>
       </div>
@@ -88,13 +88,13 @@
       <div class="row">
         <div class="field">
           <label class="lbl" for="cim1">Szállítási cím 1:</label>
-          <textarea class="ctrl ta" id="cim1" placeholder="kitöltendő" required></textarea>
+          <textarea class="ctrl ta" id="cim1" required></textarea>
           <div class="error"></div>
         </div>
 
         <div class="field">
           <label class="lbl" for="cim2">Szállítási cím 2:</label>
-          <textarea class="ctrl ta" id="cim2" placeholder="kitöltendő"></textarea>
+          <textarea class="ctrl ta" id="cim2"></textarea>
           <div class="error"></div>
         </div>
       </div>
@@ -103,13 +103,13 @@
       <div class="row">
         <div class="field">
           <label class="lbl" for="munkaNev">Munka megnevezése:</label>
-          <input class="ctrl" id="munkaNev" type="text" placeholder="kitöltendő" required />
+          <input class="ctrl" id="munkaNev" type="text" required />
           <div class="error"></div>
         </div>
 
         <div class="field">
           <label class="lbl" for="munkaSzam">Munka száma:</label>
-          <input class="ctrl" id="munkaSzam" type="text" placeholder="kitöltendő" required />
+          <input class="ctrl" id="munkaSzam" type="text" required />
           <div class="error"></div>
         </div>
       </div>
@@ -119,7 +119,7 @@
         <div class="field">
           <label class="lbl" for="tech">Nyomtatási technológia:</label>
           <select class="ctrl" id="tech" required>
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
             <option value="flexo">Flexo</option>
             <option value="ofszet">Ofszet</option>
             <option value="digitalis">Digitális</option>
@@ -140,7 +140,7 @@
         <div class="field">
           <label class="lbl" for="kliseV">Klisé vastagság:</label>
           <select class="ctrl" id="kliseV" required>
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
             <option value="1,14">1,14</option>
             <option value="2,54">2,54</option>
             <option value="2,84">2,84</option>
@@ -150,7 +150,7 @@
 
         <div class="field">
           <label class="lbl" for="henger">Henger kerület:</label>
-          <input class="ctrl" id="henger" type="number" inputmode="decimal" min="0" step="0.01" placeholder="kitöltendő" required />
+          <input class="ctrl" id="henger" type="number" inputmode="decimal" min="0" step="0.01" required />
           <div class="error"></div>
         </div>
       </div>
@@ -160,7 +160,7 @@
         <div class="field">
           <label class="lbl" for="nyomtatas">Nyomtatás:</label>
           <select class="ctrl" id="nyomtatas" required>
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
             <option value="direkt">Direktnyomtatás</option>
             <option value="tukor">Tükörnyomtatás</option>
           </select>
@@ -170,7 +170,7 @@
         <div class="field">
           <label class="lbl" for="racs">Rácssűrűség (#):</label>
           <select class="ctrl" id="racs" required>
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
             <option>#34</option><option>#36</option><option>#38</option>
             <option>#40</option><option>#42</option><option>#44</option>
             <option>#46</option><option>#48</option><option>#50</option>
@@ -184,18 +184,27 @@
       <div class="row color-row" id="colorsRow1">
         <div class="field">
           <label class="lbl" for="color1">Színek:</label>
-          <input class="ctrl" id="color1" type="text" placeholder="kitöltendő" />
+          <input class="ctrl" id="color1" type="text" />
           <div class="error"></div>
         </div>
 
         <div class="field angle-field">
           <label class="lbl" for="angle1">Szögállás:</label>
           <select class="ctrl" id="angle1">
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
           </select>
           <div class="error"></div>
         </div>
       </div>
+
+<div class="row">
+  <div class="field span-2">
+    <label class="lbl" for="megjegyzes">Megjegyzés:</label>
+    <textarea class="ctrl ta ta-note" id="megjegyzes"></textarea>
+    <div class="error"></div>
+  </div>
+</div>
+
 
     </form>
 

@@ -112,14 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
       row.innerHTML = `
         <div class="field">
           <label class="lbl ghost" aria-hidden="true">&nbsp;</label>
-          <input class="ctrl" id="color${i}" type="text" placeholder="kitöltendő" />
+          <input class="ctrl" id="color${i}" type="text" />
           <div class="error"></div>
         </div>
 
         <div class="field angle-field">
           <label class="lbl ghost" aria-hidden="true">&nbsp;</label>
           <select class="ctrl" id="angle${i}">
-            <option value="" selected disabled>Válassz</option>
+            <option value="" selected disabled></option>
           </select>
           <div class="error"></div>
         </div>
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sel.innerHTML = "";
       const ph = document.createElement("option");
       ph.value = "";
-      ph.textContent = "Válassz";
+      ph.textContent = "";
       ph.disabled = true;
       ph.selected = true;
       sel.appendChild(ph);

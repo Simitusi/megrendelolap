@@ -7,7 +7,7 @@
   --box-br:   #3f3f3f;
 
   --pad-x: 12px;
-  --gap-y: 8px;
+  --gap-y: 0px;
   --gap-x: 16px;
 
   --font: Arial, Helvetica, sans-serif;
@@ -86,15 +86,15 @@ body{
 
 /* Színek rows: denser spacing */
 .row.color-row{
-  gap: 8px;
-  margin-top: 2px;
+  gap: 16px;
+  margin-top: 0px;
 }
 .row.color-row .field{ gap: 2px; }
-.row.color-row .ctrl{ height: 24px; }
+.row.color-row .ctrl{ height: 23px; }
 
 .field{
   display: grid;
-  gap: 4px;
+  gap: 0px;
   align-content: start;
 }
 
@@ -131,12 +131,17 @@ select.ctrl{ appearance: auto; }
 }
 
 .ta{
-  min-height: 52px;
-  height: 52px;
+  min-height: 46px;
+  height: 46px;
   resize: none;
   padding-top: 6px;
   line-height: 1.2;
 }
+
+.span-2{
+  grid-column: 1 / -1;
+}
+
 
 .stack{
   display: grid;
